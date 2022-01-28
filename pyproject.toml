@@ -17,3 +17,7 @@ from __future__ import unicode_literals
 
 __version__ = {version!r}
 """
+
+[tool.isort]
+profile = "black"
+src_paths = ["src", "tests"]
