@@ -1,4 +1,4 @@
-"""Spark session objects."""
+"""Spark session integration."""
 
 from __future__ import annotations
 
