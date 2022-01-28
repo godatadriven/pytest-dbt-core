@@ -30,6 +30,7 @@ author = "Cor Zuurmond"
 extensions = [
     "sphinx.ext.duration",
     "sphinx.ext.doctest",
+    "myst_parser",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -40,6 +41,13 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [".DS_Store"]
 
+
+# https://www.sphinx-doc.org/en/master/usage/markdown.html
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".txt": "markdown",
+    ".md": "markdown",
+}
 
 # -- Options for HTML output -------------------------------------------------
 
