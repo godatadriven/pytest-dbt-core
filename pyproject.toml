@@ -1,0 +1,19 @@
+[build-system]
+requires = [
+    "setuptools >= 40.0.4",
+    "setuptools_scm >= 2.0.0",
+    "wheel >= 0.29.0",
+]
+build-backend = 'setuptools.build_meta'
+
+[tool.black]
+line-length = 79
+target-version = ['py39']
+
+[tool.setuptools_scm]
+write_to = "src/pytest-dbt-core/_version.py"
+write_to_template = """
+from __future__ import unicode_literals
+
+__version__ = {version!r}
+"""
