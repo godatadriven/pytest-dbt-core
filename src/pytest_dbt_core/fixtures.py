@@ -8,7 +8,6 @@ import os
 import dbt.tracking
 import pytest
 from _pytest.fixtures import SubRequest
-from dbt.adapters.factory import get_adapter, register_adapter, AdapterContainer
 from dbt.clients.jinja import MacroGenerator
 from dbt.config.runtime import RuntimeConfig
 from dbt.context import providers
@@ -17,6 +16,12 @@ from dbt.parser.manifest import ManifestLoader
 from dbt.tracking import User
 
 from .session import _SparkConnectionManager
+
+from dbt.adapters.factory import (  # isort:skip
+    AdapterContainer,
+    get_adapter,
+    register_adapter,
+)
 
 
 dbt.tracking.active_user = User(os.getcwd())

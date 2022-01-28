@@ -5,11 +5,11 @@ from __future__ import annotations
 from types import TracebackType
 from typing import Any
 
-from dbt.contracts.connection import ConnectionState
 from dbt.adapters.spark.connections import (
-    SparkConnectionManager,
     PyodbcConnectionWrapper,
+    SparkConnectionManager,
 )
+from dbt.contracts.connection import ConnectionState
 from pyspark.sql import DataFrame, Row, SparkSession
 
 
@@ -173,7 +173,7 @@ class Connection:
 
 class _SparkConnectionManager(SparkConnectionManager):
     @classmethod
-    def open(cls, connection):
+    def open(cls, connection: Any) -> Any:
         handle = PyodbcConnectionWrapper(Connection())
         connection.handle = handle
         connection.state = ConnectionState.OPEN
