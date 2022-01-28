@@ -74,7 +74,9 @@ def get_upstream(repo: Repo) -> Remote:
         for url in remote.urls:
             if url.endswith("godatadriven/pytest-dbt-core.git"):
                 return remote
-    raise RuntimeError("could not find godatadriven/pytest-dbt-core.git remote")
+    raise RuntimeError(
+        "could not find godatadriven/pytest-dbt-core.git remote"
+    )
 
 
 def tag_release_commit(
