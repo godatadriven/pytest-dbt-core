@@ -22,7 +22,7 @@ Install `pytest-dbt-core` via pip with
 Usage
 *************
 
-Unit test a macros:
+Unit test a macro:
 
 .. code-block:: python
 
@@ -49,6 +49,7 @@ Unit test a macros:
    :maxdepth: 2
    :caption: Contents:
 
+   dbt_spark.rst
 
 
 Indices and tables
