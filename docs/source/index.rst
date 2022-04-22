@@ -22,7 +22,7 @@ Install `pytest-dbt-core` via pip with
 Usage
 *************
 
-Unit test a macros:
+Unit test a macro:
 
 .. code-block:: python
 
