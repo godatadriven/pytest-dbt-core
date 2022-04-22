@@ -15,8 +15,6 @@ from dbt.contracts.graph.manifest import Manifest
 from dbt.parser.manifest import ManifestLoader
 from dbt.tracking import User
 
-from .session import _SparkConnectionManager
-
 from dbt.adapters.factory import (  # isort:skip
     AdapterContainer,
     get_adapter,
@@ -77,12 +75,7 @@ def adapter(config: RuntimeConfig) -> AdapterContainer:
     """
     register_adapter(config)
     adapter = get_adapter(config)
-
-    connection_manager = _SparkConnectionManager(adapter.config)
-    adapter.connections = connection_manager
-
     adapter.acquire_connection()
-
     return adapter
 
 
