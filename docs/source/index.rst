@@ -51,6 +51,7 @@ Unit test a macro:
 
    configuration.rst
    dbt_spark.rst
+   projects.rst
 
 
 Indices and tables
