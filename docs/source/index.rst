@@ -4,14 +4,14 @@
    contain the root `toctree` directive.
 
 pytest-dbt-core
-###############
+===============
 
 Write unit tests for your dbt logic with `pytest-dbt-core`!
 `pytest-dbt-core` is a `pytest <https://docs.pytest.org>`_ plugin for testing your
 `dbt <https://getdbt.com>`_ projects.
 
 Installation
-************
+*************
 
 Install `pytest-dbt-core` via pip with
 
@@ -20,9 +20,9 @@ Install `pytest-dbt-core` via pip with
    python -m pip install pytest-dbt-core
 
 Usage
-******
+*************
 
-Unit test a macro:
+Unit test a macros:
 
 .. code-block:: python
 
