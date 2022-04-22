@@ -55,21 +55,26 @@ class Args:
     arguments here.
     """
 
-    project_dir: str = os.getcwd()
+    project_dir: str
 
 
 @pytest.fixture
-def config() -> RuntimeConfig:
+def config(request: SubRequest) -> RuntimeConfig:
     """
     Get the (runtime) config.
+
+    Parameters
+    ----------
+    request : SubRequest
+        The pytest request.
 
     Returns
     -------
     RuntimeConfig
         The runtime config.
     """
-    # requires a profile in your project wich also exists in your profiles file
-    config = RuntimeConfig.from_args(Args())
+    project_dir = request.config.getoption("--dbt-project-dir")
+    config = RuntimeConfig.from_args(Args(project_dir=project_dir))
     return config
 
 
