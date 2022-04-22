@@ -30,7 +30,6 @@ author = "Cor Zuurmond"
 extensions = [
     "sphinx.ext.duration",
     "sphinx.ext.doctest",
-    "myst_parser",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
