@@ -7,6 +7,7 @@ import os
 
 import dbt.tracking
 import pytest
+from _pytest.config.argparsing import Parser
 from _pytest.fixtures import SubRequest
 from dbt.clients.jinja import MacroGenerator
 from dbt.config.runtime import RuntimeConfig
@@ -25,6 +26,23 @@ from dbt.adapters.factory import (  # isort:skip
 
 
 dbt.tracking.active_user = User(os.getcwd())
+
+
+def pytest_addoption(parser: Parser) -> None:
+    """
+    Add pytest option.
+
+    Parameters
+    ----------
+    parser : Parser
+        The parser.
+    """
+    parser.addoption(
+        "--dbt-project-dir",
+        help="The dbt project directory.",
+        type="string",
+        default=os.getcwd(),
+    )
 
 
 @dataclasses.dataclass(frozen=True)
