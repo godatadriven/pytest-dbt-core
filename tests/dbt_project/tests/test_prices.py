@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import pytest
 from dbt.clients.jinja import MacroGenerator
 from pyspark.sql import SparkSession
