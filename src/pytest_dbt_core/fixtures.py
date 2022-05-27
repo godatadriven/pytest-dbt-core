@@ -15,8 +15,6 @@ from dbt.contracts.graph.manifest import Manifest
 from dbt.parser.manifest import ManifestLoader
 from dbt.tracking import User
 
-from .session import _SparkConnectionManager
-
 from dbt.adapters.factory import (  # isort:skip
     AdapterContainer,
     get_adapter,
@@ -37,21 +35,26 @@ class Args:
     arguments here.
     """
 
-    project_dir: str = os.getcwd()
+    project_dir: str
 
 
 @pytest.fixture
-def config() -> RuntimeConfig:
+def config(request: SubRequest) -> RuntimeConfig:
     """
     Get the (runtime) config.
+
+    Parameters
+    ----------
+    request : SubRequest
+        The pytest request.
 
     Returns
     -------
     RuntimeConfig
         The runtime config.
     """
-    # requires a profile in your project wich also exists in your profiles file
-    config = RuntimeConfig.from_args(Args())
+    project_dir = request.config.getoption("--dbt-project-dir")
+    config = RuntimeConfig.from_args(Args(project_dir=project_dir))
     return config
 
 
@@ -72,12 +75,7 @@ def adapter(config: RuntimeConfig) -> AdapterContainer:
     """
     register_adapter(config)
     adapter = get_adapter(config)
-
-    connection_manager = _SparkConnectionManager(adapter.config)
-    adapter.connections = connection_manager
-
     adapter.acquire_connection()
-
     return adapter
 
 

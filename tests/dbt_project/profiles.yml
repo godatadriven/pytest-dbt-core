@@ -1,0 +1,8 @@
+dbt_project:
+  target: test
+  outputs:
+    test:
+      type: spark
+      method: session
+      schema: test
+      host: NA        # not used, but required by `dbt-core`
