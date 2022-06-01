@@ -1,3 +1,4 @@
+- Add target flag ([issue](https://github.com/godatadriven/pytest-dbt-core/issues/11), [PR](https://github.com/godatadriven/pytest-dbt-core/pull/13))
 - Delete session module [is included in dbt-spark](https://github.com/dbt-labs/dbt-spark/issues/272)
 - Add Github templates
 
