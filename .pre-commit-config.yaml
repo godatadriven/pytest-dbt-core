@@ -52,7 +52,7 @@ repos:
   rev: v1.0.4
   hooks:
   - id: python-bandit-vulnerability-check
-    args: [-l, --recursive, -x, tests, -x, docs/source/_static/tests]
+    args: [-l, --recursive, -x, tests, -x, docs/source/_static/dbt_project/tests]
     name: Check for vulnerabilities in code with bandit
     files: .py$
 - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
