@@ -33,9 +33,14 @@ class Args:
     dbt is written as command line tool, therefore the entrypoints of dbt expect
     (parsed) arguments. To reuse dbt's entrypoints we mock the (minimally)
     arguments here.
+
+    Source
+    ------
+    See argparse `add_argument` statements in `dbt.main`.
     """
 
     project_dir: str
+    target: str
 
 
 @pytest.fixture
@@ -53,8 +58,11 @@ def config(request: SubRequest) -> RuntimeConfig:
     RuntimeConfig
         The runtime config.
     """
-    project_dir = request.config.getoption("--dbt-project-dir")
-    config = RuntimeConfig.from_args(Args(project_dir=project_dir))
+    args = Args(
+        project_dir=request.config.getoption("--dbt-project-dir"),
+        target=request.config.getoption("--dbt-target"),
+    )
+    config = RuntimeConfig.from_args(args)
     return config
 
 
