@@ -1,3 +1,5 @@
+- Add Github templates
+
 ## [0.1.0rc1] - 2022-05-27
 
 - Add dbt project for testing
