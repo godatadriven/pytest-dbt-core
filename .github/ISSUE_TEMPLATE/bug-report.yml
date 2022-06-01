@@ -54,10 +54,12 @@ body:
           - **OS**: Ubuntu 20.04
           - **Python**: 3.7.2 (`python --version`)
           - **dbt**: 0.21.0 (`dbt --version`)
+          - **pytest-dbt-core**: 0.1.0 (`pip freeze | grep pytest-dbt-core`)
       value: |
         - OS:
         - Python:
         - dbt:
+        - pytest-dbt-core:
       render: markdown
     validations:
       required: false
