@@ -1,6 +1,16 @@
 dbt_project:
-  target: test
+  target: dev
   outputs:
+    dev:
+      type: spark
+      method: odbc
+      schema: cor
+      host: https://adb-123456789.00.azuredatabricks.net
+      port: 443
+      organization: "123456789"
+      cluster: 1234-567890-12ab3c4d
+      token: dapi1abc2345de6f78g901h234ij5klm6789-1
+      driver: /Library/simba/spark/lib/libsparkodbc_sbu.dylib
     test:
       type: spark
       method: session
