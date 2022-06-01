@@ -1,0 +1,6 @@
+name: dbt_project
+profile: dbt_project
+version: '0.3.0'
+config-version: 2
+require-dbt-version: [">=1.0.0", "<2.0.0"]
+macro-paths: ["macros"]
