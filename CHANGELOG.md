@@ -1,3 +1,4 @@
+- Delete session module [is included in dbt-spark](https://github.com/dbt-labs/dbt-spark/issues/272)
 - Add Github templates
 
 ## [0.1.0rc1] - 2022-05-27
