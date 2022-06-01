@@ -1,5 +1,5 @@
 name: 🐞 Bug
-description: Report a bug or an issue you've found with pytest-dbt-core
+description: Report a bug or an issue you've found with `pytest-dbt-core`
 title: "[Bug] <title>"
 labels: ["bug", "triage"]
 body:

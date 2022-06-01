@@ -1,5 +1,5 @@
 name: ✨ Feature
-description: Suggest an idea for pytest-dbt-core
+description: Suggest an idea for `pytest-dbt-core`
 title: "[Feature] <title>"
 labels: ["enhancement", "triage"]
 body:
