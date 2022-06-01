@@ -40,7 +40,7 @@ class Args:
     """
 
     project_dir: str
-    target: str
+    target: str | None
 
 
 @pytest.fixture
