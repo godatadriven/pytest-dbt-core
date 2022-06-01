@@ -16,7 +16,7 @@ __all__ = (
 
 def pytest_addoption(parser: Parser) -> None:
     """
-    Add pytest option.
+    Add pytest options.
 
     Parameters
     ----------
@@ -28,4 +28,9 @@ def pytest_addoption(parser: Parser) -> None:
         help="The dbt project directory.",
         type="string",
         default=os.getcwd(),
+    )
+    parser.addoption(
+        "--dbt-target",
+        help="Which target to load for the given profile",
+        type="string",
     )
