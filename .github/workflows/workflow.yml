@@ -63,7 +63,7 @@ jobs:
     if: contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     needs:
-    - tox
+    - tests
     - "pre-commit"
     steps:
     - uses: actions/checkout@v2
