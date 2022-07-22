@@ -17,6 +17,7 @@ from pyspark.sql import types as T  # noqa: N812
         ("c!h?a#r$a(c)t%e&rs", "characters"),
         ("trailing white spaces", "trailing_white_spaces"),
         ("column.with.periods", "column_with_periods"),
+        ("9leading number", "_9leading_number"),
     ],
 )
 def test_normalize_column_names_spaces_are_replaced_with_underscores(
