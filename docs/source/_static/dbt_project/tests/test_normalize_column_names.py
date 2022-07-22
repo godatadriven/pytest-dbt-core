@@ -1,7 +1,6 @@
 import pytest
 from dbt.clients.jinja import MacroGenerator
 from pyspark.sql import SparkSession
-from pyspark.sql import types as T  # noqa: N812
 
 
 @pytest.mark.parametrize(
@@ -28,15 +27,8 @@ def test_normalize_column_names_spaces_are_replaced_with_underscores(
     expected_column: str,
 ) -> None:
     """The spaces in the column names should be replaced with underscores."""
-    schema = T.StructType([T.StructField(column, T.BooleanType(), True)])
-    df = spark_session.createDataFrame(
-        spark_session.sparkContext.emptyRDD(), schema=schema
-    )
-
-    df.createOrReplaceTempView("replace_spaces_with_underscores")
-    normalized_column_names = macro_generator(df.columns)
+    normalized_column_names = macro_generator([column])
     out = spark_session.sql(
-        f"SELECT {normalized_column_names} FROM replace_spaces_with_underscores"
+        f"SELECT {normalized_column_names} FROM (SELECT True AS `{column}`)"
     )
-
     assert out.columns[0] == expected_column, normalized_column_names
