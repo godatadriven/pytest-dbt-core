@@ -20,13 +20,13 @@ from pyspark.sql import SparkSession
         ("UPPERCASE", "uppercase"),
     ],
 )
-def test_normalize_column_names_spaces_are_replaced_with_underscores(
+def test_normalize_column_names(
     spark_session: SparkSession,
     macro_generator: MacroGenerator,
     column: str,
     expected_column: str,
 ) -> None:
-    """The spaces in the column names should be replaced with underscores."""
+    """Test normalize column names with different scenarios."""
     normalized_column_names = macro_generator([column])
     out = spark_session.sql(
         f"SELECT {normalized_column_names} FROM (SELECT True AS `{column}`)"
