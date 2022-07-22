@@ -22,9 +22,14 @@ Install `pytest-dbt-core` via pip with
 Usage
 ******
 
+Create a macro:
+
+.. literalinclude :: _static/dbt_project/macros/normalize_column_names.sql
+   :language: jinja
+
 Unit test a macro:
 
-.. literalinclude :: _static/dbt_project/tests/test_spark_get_tables.py
+.. literalinclude :: _static/dbt_project/tests/test_normalize_column_names.py
    :language: python
 
 .. toctree::

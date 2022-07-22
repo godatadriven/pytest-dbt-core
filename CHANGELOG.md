@@ -1,3 +1,5 @@
+- Add example with column rename macro ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/19))
+
 ## [0.1.0] - 2022-07-22
 
 - Run test examples from docs ([issue](https://github.com/godatadriven/pytest-dbt-core/issues/14), [PR](https://github.com/godatadriven/pytest-dbt-core/pull/17))
