@@ -14,7 +14,7 @@ from pyspark.sql import SparkSession
         ("unit", "unit"),
         ("column with spaces", "column_with_spaces"),
         ("c!h?a#r$a(c)t%e&rs", "characters"),
-        ("trailing white spaces", "trailing_white_spaces"),
+        ("trailing white spaces  ", "trailing_white_spaces"),
         ("column.with.periods", "column_with_periods"),
         ("9leading number", "_9leading_number"),
         ("UPPERCASE", "uppercase"),
