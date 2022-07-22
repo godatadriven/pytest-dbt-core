@@ -10,7 +10,11 @@ from pyspark.sql import types as T  # noqa: N812
     indirect=True,
 )
 @pytest.mark.parametrize(
-    "column,expected_column", [("column with spaces", "column_with_spaces")]
+    "column,expected_column",
+    [
+        ("unit", "unit"),
+        ("column with spaces", "column_with_spaces"),
+    ],
 )
 def test_normalize_column_names_spaces_are_replaced_with_underscores(
     spark_session: SparkSession,
