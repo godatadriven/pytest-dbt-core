@@ -36,4 +36,4 @@ def test_normalize_column_names_spaces_are_replaced_with_underscores(
         f"SELECT {normalized_column_names} FROM replace_spaces_with_underscores"
     )
 
-    assert out.columns[0] == expected_column
+    assert out.columns[0] == expected_column, normalized_column_names
