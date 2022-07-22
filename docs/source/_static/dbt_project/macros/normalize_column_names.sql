@@ -5,7 +5,7 @@
 
      {%- set normalized_column_name = re.sub('[!?@#$()%&]', '', column_name).strip().replace(' ', '_').replace('.', '_').rstrip('_').lower() -%}
 
-     {# Columns can not start with digits #}
+     {# Columns should not start with digits #}
      {%- if normalized_column_name[0].isdigit()  -%}
           {% set normalized_column_name = '_' + normalized_column_name-%}
      {% endif -%}
