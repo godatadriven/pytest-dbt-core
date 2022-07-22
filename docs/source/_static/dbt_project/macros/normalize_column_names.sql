@@ -3,7 +3,7 @@
 
 {%- for column_name in column_names -%}
 
-     {%- set normalized_column_name = re.sub('[!?@#$()%`]', '', column_name).strip().replace(' ', '_').replace('.', '_').rstrip('_').lower() -%}
+     {%- set normalized_column_name = re.sub('[!?@#$()%&]', '', column_name).strip().replace(' ', '_').replace('.', '_').rstrip('_').lower() -%}
 
      {# Columns can not start with digits #}
      {%- if normalized_column_name[0].isdigit()  -%}
