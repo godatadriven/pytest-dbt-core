@@ -9,7 +9,7 @@ from pyspark.sql import SparkSession
     indirect=True,
 )
 @pytest.mark.parametrize(
-    "column,expected_column",
+    "column_name,expected_column_name",
     [
         ("unit", "unit"),
         ("column with spaces", "column_with_spaces"),
@@ -23,12 +23,12 @@ from pyspark.sql import SparkSession
 def test_normalize_column_names(
     spark_session: SparkSession,
     macro_generator: MacroGenerator,
-    column: str,
-    expected_column: str,
+    column_name: str,
+    expected_column_name: str,
 ) -> None:
     """Test normalize column names with different scenarios."""
-    normalized_column_names = macro_generator([column])
+    normalized_column_names = macro_generator([column_name])
     out = spark_session.sql(
-        f"SELECT {normalized_column_names} FROM (SELECT True AS `{column}`)"
+        f"SELECT {normalized_column_names} FROM (SELECT True AS `{column_name}`)"
     )
-    assert out.columns[0] == expected_column, normalized_column_names
+    assert out.columns[0] == expected_column_name, normalized_column_names
