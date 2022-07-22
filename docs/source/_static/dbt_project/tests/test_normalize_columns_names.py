@@ -15,6 +15,7 @@ from pyspark.sql import types as T  # noqa: N812
         ("unit", "unit"),
         ("column with spaces", "column_with_spaces"),
         ("c!h?a#r$a(c)t%e&rs", "characters"),
+        ("trailing white spaces", "trailing_white_spaces"),
     ],
 )
 def test_normalize_column_names_spaces_are_replaced_with_underscores(
