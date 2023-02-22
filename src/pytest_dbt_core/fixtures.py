@@ -8,6 +8,7 @@ import os
 import dbt.tracking
 import pytest
 from _pytest.fixtures import SubRequest
+from dbt import flags
 from dbt.clients.jinja import MacroGenerator
 from dbt.config.runtime import RuntimeConfig
 from dbt.context import providers
@@ -58,6 +59,12 @@ def config(request: SubRequest) -> RuntimeConfig:
     RuntimeConfig
         The runtime config.
     """
+
+    # only override profiles_dir if its set, otherwise keep DBT behavior
+    profiles_dir = request.config.getoption("--profiles-dir")
+    if profiles_dir:
+        flags.PROFILES_DIR = profiles_dir
+
     args = Args(
         project_dir=request.config.getoption("--dbt-project-dir"),
         target=request.config.getoption("--dbt-target"),

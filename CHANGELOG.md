@@ -1,5 +1,9 @@
 - Add example with column rename macro ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/19))
 
+## [0.1.1] - 2023-02-22
+
+- Expore `--profiles-dir` as option for setting profiles directory instead of using `DBT_PROFILES_DIR` environment variable
+
 ## [0.1.0] - 2022-07-22
 
 - Run test examples from docs ([issue](https://github.com/godatadriven/pytest-dbt-core/issues/14), [PR](https://github.com/godatadriven/pytest-dbt-core/pull/17))
