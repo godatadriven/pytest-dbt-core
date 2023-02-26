@@ -1,6 +1,6 @@
 - Add example with column rename macro ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/19))
 - Extend tox matrix to test for dbt-spark minor versions ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/29))
-- Extend testing matrix to test for Python minor versions 3.10 and 3.11 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/30))
+- Extend testing matrix to test for Python minor version 3.10 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/30))
 
 ## [0.1.0] - 2022-07-22
 
