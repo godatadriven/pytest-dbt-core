@@ -60,7 +60,6 @@ def config(request: SubRequest) -> RuntimeConfig:
         The runtime config.
     """
 
-    # only override profiles_dir if its set, otherwise keep DBT behavior
     profiles_dir = request.config.getoption("--profiles-dir")
     if profiles_dir:
         flags.PROFILES_DIR = profiles_dir
