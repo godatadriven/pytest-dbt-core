@@ -63,7 +63,7 @@ def config(request: SubRequest) -> RuntimeConfig:
 
     profiles_dir = request.config.getoption("--profiles-dir")
     if profiles_dir:
-        flags.PROFILES_DIR = profiles_dir
+        flags.PROFILES_DIR = os.path.abspath(profiles_dir)
 
     args = Args(
         project_dir=request.config.getoption("--dbt-project-dir"),
