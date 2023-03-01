@@ -5,7 +5,6 @@
 - Extend tox matrix to test for dbt-spark minor versions ([issue](https://github.com/godatadriven/pytest-dbt-core/issues/28), [PR](https://github.com/godatadriven/pytest-dbt-core/pull/29))
 - Extend testing matrix to test for Python minor version 3.10 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/30))
 
-
 ## [0.1.0] - 2022-07-22
 
 - Run test examples from docs ([issue](https://github.com/godatadriven/pytest-dbt-core/issues/14), [PR](https://github.com/godatadriven/pytest-dbt-core/pull/17))
