@@ -1,8 +1,9 @@
-- Add example with column rename macro ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/19))
-- Add `--profiles-dir` as an option for setting the profiles directory
-- Extend tox matrix to test for dbt-spark minor versions ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/29))
-- Extend testing matrix to test for Python minor version 3.10 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/30))
+## [0.2.0] - 2023-03-01
 
+- Add example with column rename macro ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/19))
+- Add `--profiles-dir` as an option for setting the profiles directory ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/25))
+- Extend tox matrix to test for dbt-spark minor versions ([issue](https://github.com/godatadriven/pytest-dbt-core/issues/28), [PR](https://github.com/godatadriven/pytest-dbt-core/pull/29))
+- Extend testing matrix to test for Python minor version 3.10 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/30))
 
 ## [0.1.0] - 2022-07-22
 
