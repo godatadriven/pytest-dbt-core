@@ -34,3 +34,8 @@ def pytest_addoption(parser: Parser) -> None:
         help="Which target to load for the given profile",
         type="string",
     )
+    parser.addoption(
+        "--profiles-dir",
+        help="Which directory to look in for the profiles.yml file",
+        type="string",
+    )
