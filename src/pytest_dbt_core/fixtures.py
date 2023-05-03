@@ -43,6 +43,7 @@ class Args:
     project_dir: str
     target: str | None
     profile: str | None
+    threads: int | None
 
 
 @pytest.fixture
@@ -69,6 +70,7 @@ def config(request: SubRequest) -> RuntimeConfig:
         project_dir=request.config.getoption("--dbt-project-dir"),
         target=request.config.getoption("--dbt-target"),
         profile=None,
+        threads=None,
     )
     config = RuntimeConfig.from_args(args)
     return config
