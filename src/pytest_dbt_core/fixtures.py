@@ -62,6 +62,8 @@ def config(request: SubRequest) -> RuntimeConfig:
     RuntimeConfig
         The runtime config.
     """
+    # For the  arguments that are hardcoded to `None`, dbt internals set the
+    # appropiate values
     args = Args(
         project_dir=request.config.getoption("--dbt-project-dir"),
         profiles_dir=request.config.getoption("--profiles-dir"),
@@ -69,7 +71,7 @@ def config(request: SubRequest) -> RuntimeConfig:
         profile=None,
         threads=None,
     )
-    flags.set_from_args(args, None)
+    flags.set_from_args(args, user_config=None)
 
     config = RuntimeConfig.from_args(args)
     return config
