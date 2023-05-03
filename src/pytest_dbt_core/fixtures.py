@@ -41,6 +41,7 @@ class Args:
     """
 
     project_dir: str
+    profiles_dir: str
     target: str | None
     profile: str | None
     threads: int | None
@@ -61,17 +62,15 @@ def config(request: SubRequest) -> RuntimeConfig:
     RuntimeConfig
         The runtime config.
     """
-
-    profiles_dir = request.config.getoption("--profiles-dir")
-    if profiles_dir:
-        flags.PROFILES_DIR = os.path.abspath(profiles_dir)
-
     args = Args(
         project_dir=request.config.getoption("--dbt-project-dir"),
+        profiles_dir=request.config.getoption("--profiles-dir"),
         target=request.config.getoption("--dbt-target"),
         profile=None,
         threads=None,
     )
+    flags.set_from_args(args, None)
+
     config = RuntimeConfig.from_args(args)
     return config
 
