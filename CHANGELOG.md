@@ -1,3 +1,5 @@
+## [0.2.1] - 2023-05-03
+
 - Support dbt v1.5 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/34))
 
 ## [0.2.0] - 2023-03-01
