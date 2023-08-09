@@ -1,5 +1,6 @@
 - Remove upper version constrain for dbt core ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/43))
 - CI speed up: ignore redundant tox environments ([issue](https://github.com/godatadriven/pytest-dbt-core/issues/44), [PR](https://github.com/godatadriven/pytest-dbt-core/pull/45))
+- Test for Python 3.11 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/41))
 
 ## [0.2.2] - 2023-08-09
 
