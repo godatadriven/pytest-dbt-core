@@ -56,10 +56,7 @@ jobs:
         python -m pip install tox
 
     - name: Test with tox
-      run: tox
-
-    - name: Test docs with tox
-      run: tox -e docs
+      run: tox --skip-env "^py(?!${{ matrix.python-version }}).*"
 
   test-release:
     if: contains(github.ref, 'refs/tags/')
