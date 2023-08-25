@@ -58,6 +58,9 @@ jobs:
     - name: Test with tox
       run: tox --skip-env "^py(?!${{ matrix.python-version }}).*"
 
+    - name: Test docs with tox
+      run: tox -e docs
+
   test-release:
     if: contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
