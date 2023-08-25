@@ -1,3 +1,5 @@
+- Remove upper version constrain for dbt core ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/43))
+
 ## [0.2.2] - 2023-08-09
 
 - Support dbt v1.6 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/37), [PR](https://github.com/godatadriven/pytest-dbt-core/pull/38))
