@@ -13,7 +13,7 @@ For a conda environment do:
 
 ``` bash
 conda activate <env-name>
-pip install -e .[dev]
+pip install -e .[test]
 ```
 
 ## Venv
@@ -23,7 +23,7 @@ For a pip environment do:
 ``` bash
 python -m venv venv/
 source ./venv/bin/activate
-pip install -e .[dev]
+pip install -e .[test]
 ```
 
 # Testing
@@ -83,7 +83,7 @@ using:
 pytest tests/
 ```
 
-Unit tests are the lowest level op tests, and should test isolated pieces of
+Unit tests are the lowest level of tests, and should test isolated pieces of
 code. For example, testing an Apache Spark UDF is a perfect example:
 
 ```python
@@ -102,7 +102,7 @@ def test_add_udf():
   assert add(19, 25) == 44
 ```
 
-For example, if someone writes a nicely complex regular expression, than you
+For example, if someone writes a complex regular expression, then you
 want to make sure that it is properly covered by unit-tests. The `spark_session`
 is automatically generated in the background thanks to the
 [`pytest-spark`](https://pypi.org/project/pytest-spark/) package.
