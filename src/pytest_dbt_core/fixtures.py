@@ -147,6 +147,12 @@ def manifest(
     Manifest
         The manifest.
     """
+    if semver.VersionSpecifier("1", "7", "16") < DBT_INSTALLED_VERSION:
+        from dbt_common.clients.system import get_env
+        from dbt_common.context import set_invocation_context
+
+        set_invocation_context(get_env())
+
     manifest = ManifestLoader.get_full_manifest(adapter.config)
     return manifest
 
