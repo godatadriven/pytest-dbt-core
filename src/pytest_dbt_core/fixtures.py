@@ -15,7 +15,6 @@ from dbt.config.runtime import RuntimeConfig
 from dbt.context import providers
 from dbt.contracts.graph.manifest import Manifest
 from dbt.parser.manifest import ManifestLoader
-from dbt.semver import VersionSpecifier
 from dbt.tracking import User
 
 from dbt.adapters.factory import (  # isort:skip
@@ -26,6 +25,19 @@ from dbt.adapters.factory import (  # isort:skip
 
 
 DBT_INSTALLED_VERSION = version.get_installed_version()
+
+
+# https://github.com/dbt-labs/dbt-core/issues/10251
+try:
+    from dbt.version import semver
+except ImportError:
+    try:
+        import dbt_common.semver as semver
+    except ImportError:
+        try:
+            import dbt.common.semver as semver
+        except ImportError:
+            import dbt.semver as semver
 
 
 dbt.tracking.active_user = User(os.getcwd())
@@ -77,7 +89,7 @@ def config(request: SubRequest) -> RuntimeConfig:
         threads=None,
     )
 
-    if VersionSpecifier("1", "5", "12") < DBT_INSTALLED_VERSION:
+    if semver.VersionSpecifier("1", "5", "12") < DBT_INSTALLED_VERSION:
         # See https://github.com/dbt-labs/dbt-core/issues/9183
         project_flags = project.read_project_flags(
             args.project_dir, args.profiles_dir
