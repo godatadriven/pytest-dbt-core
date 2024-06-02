@@ -40,10 +40,6 @@ except ImportError:
             import dbt.semver as semver
 
 
-if semver.VersionSpecifier("1", "7", "16") < DBT_INSTALLED_VERSION:
-    from dbt.mp_context import get_mp_context
-
-
 dbt.tracking.active_user = User(os.getcwd())
 
 
@@ -122,6 +118,8 @@ def adapter(config: RuntimeConfig) -> AdapterContainer:
         The adapter.
     """
     if semver.VersionSpecifier("1", "7", "16") < DBT_INSTALLED_VERSION:
+        from dbt.mp_context import get_mp_context
+
         register_adapter(config, get_mp_context())
     else:
         register_adapter(config)
