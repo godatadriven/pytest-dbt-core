@@ -4,6 +4,7 @@
   <a href="https://github.com/godatadriven/pytest-dbt-core/actions/workflows/workflow.yml"><img alt="build: pytest-dbt-core" src="https://github.com/godatadriven/pytest-dbt-core/actions/workflows/workflow.yml/badge.svg"></a>
   <a href="https://github.com/psf/black"><img alt="code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
   <a href="https://pepy.tech/badge/pytest-dbt-core/"><img alt="downloads" src="https://pepy.tech/badge/pytest-dbt-core/month"></a>
+  <a href="https://www.aschey.tech/tokei/"><img alt="lines-of-code" src="https://www.aschey.tech/tokei/github/godatadriven/pytest-dbt-core?category=code"></a>
 </p>
 
 Pytest dbt core is a [pytest](https://docs.pytest.org) plugin for testing your
