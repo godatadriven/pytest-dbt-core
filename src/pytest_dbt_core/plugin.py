@@ -26,16 +26,16 @@ def pytest_addoption(parser: Parser) -> None:
     parser.addoption(
         "--dbt-project-dir",
         help="The dbt project directory.",
-        type="string",
+        type=str,
         default=os.getcwd(),
     )
     parser.addoption(
         "--dbt-target",
         help="Which target to load for the given profile",
-        type="string",
+        type=str,
     )
     parser.addoption(
         "--profiles-dir",
         help="Which directory to look in for the profiles.yml file",
-        type="string",
+        type=str,
     )
