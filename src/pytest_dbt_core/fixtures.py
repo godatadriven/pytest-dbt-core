@@ -8,12 +8,14 @@ import os
 import dbt.tracking
 import pytest
 from _pytest.fixtures import SubRequest
-from dbt import flags
+from dbt import flags, version
 from dbt.clients.jinja import MacroGenerator
+from dbt.config import project
 from dbt.config.runtime import RuntimeConfig
 from dbt.context import providers
 from dbt.contracts.graph.manifest import Manifest
 from dbt.parser.manifest import ManifestLoader
+from dbt.semver import VersionSpecifier
 from dbt.tracking import User
 
 from dbt.adapters.factory import (  # isort:skip
@@ -71,7 +73,15 @@ def config(request: SubRequest) -> RuntimeConfig:
         profile=None,
         threads=None,
     )
-    flags.set_from_args(args, user_config=None)
+
+    if VersionSpecifier("1", "5", "12") < version.get_installed_version():
+        # See https://github.com/dbt-labs/dbt-core/issues/9183
+        project_flags = project.read_project_flags(
+            args.project_dir, args.profiles_dir
+        )
+        flags.set_from_args(args, project_flags)
+    else:
+        flags.set_from_args(args, user_config=None)
 
     config = RuntimeConfig.from_args(args)
     return config

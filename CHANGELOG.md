@@ -1,5 +1,6 @@
 - Test dbt v1.7 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/48))
 - Make pytest `parser.addoption` type a function ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/51))
+- Handle dbt flags for dbt version 1.6 and higher
 
 ## [0.2.3] - 2023-08-25
 
