@@ -25,6 +25,9 @@ from dbt.adapters.factory import (  # isort:skip
 )
 
 
+DBT_INSTALLED_VERSION = version.get_installed_version()
+
+
 dbt.tracking.active_user = User(os.getcwd())
 
 
@@ -74,7 +77,7 @@ def config(request: SubRequest) -> RuntimeConfig:
         threads=None,
     )
 
-    if VersionSpecifier("1", "5", "12") < version.get_installed_version():
+    if VersionSpecifier("1", "5", "12") < DBT_INSTALLED_VERSION:
         # See https://github.com/dbt-labs/dbt-core/issues/9183
         project_flags = project.read_project_flags(
             args.project_dir, args.profiles_dir
