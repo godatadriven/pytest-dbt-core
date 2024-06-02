@@ -62,6 +62,8 @@ class Args:
     target: str | None
     profile: str | None
     threads: int | None
+    # Required from dbt version 1.8 onwards
+    REQUIRE_RESOURCE_NAMES_WITHOUT_SPACES = False
 
 
 @pytest.fixture
