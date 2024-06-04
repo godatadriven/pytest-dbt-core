@@ -1,3 +1,5 @@
+- Drop support for Python 3.7 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/57))
+
 ## [0.2.4] - 2024-06-04
 
 - Support dbt v1.8 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/58))

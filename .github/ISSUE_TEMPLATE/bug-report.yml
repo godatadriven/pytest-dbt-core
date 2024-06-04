@@ -52,7 +52,7 @@ body:
       description: |
         examples:
           - **OS**: Ubuntu 20.04
-          - **Python**: 3.7.2 (`python --version`)
+          - **Python**: 3.10.13 (`python --version`)
           - **dbt**: 0.21.0 (`dbt --version`)
           - **pytest-dbt-core**: 0.1.0 (`pip freeze | grep pytest-dbt-core`)
       value: |
