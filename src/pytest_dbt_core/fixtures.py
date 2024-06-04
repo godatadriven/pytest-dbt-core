@@ -24,23 +24,16 @@ from dbt.adapters.factory import (  # isort:skip
 )
 
 
-DBT_INSTALLED_VERSION = version.get_installed_version()
-
-
-# https://github.com/dbt-labs/dbt-core/issues/10251
-try:
-    from dbt.version import semver
-except ImportError:
-    try:
-        import dbt_common.semver as semver
-    except ImportError:
-        try:
-            import dbt.common.semver as semver
-        except ImportError:
-            import dbt.semver as semver
-
-
 dbt.tracking.active_user = User(os.getcwd())
+
+
+def _get_installed_dbt_version() -> tuple[int, int]:
+    """Cast a dbt version to a tuple with major and minor version."""
+    installed_dbt_version = version.get_installed_version()
+    return int(installed_dbt_version.major), int(installed_dbt_version.minor)
+
+
+DBT_INSTALLED_VERSION = _get_installed_dbt_version()
 
 
 @dataclasses.dataclass(frozen=True)
@@ -91,7 +84,7 @@ def config(request: SubRequest) -> RuntimeConfig:
         threads=None,
     )
 
-    if semver.VersionSpecifier("1", "5", "12") < DBT_INSTALLED_VERSION:
+    if (1, 5) < DBT_INSTALLED_VERSION:
         # See https://github.com/dbt-labs/dbt-core/issues/9183
         project_flags = project.read_project_flags(
             args.project_dir, args.profiles_dir
@@ -119,7 +112,7 @@ def adapter(config: RuntimeConfig) -> AdapterContainer:
     AdapterContainer
         The adapter.
     """
-    if semver.VersionSpecifier("1", "7", "16") < DBT_INSTALLED_VERSION:
+    if (1, 7) < DBT_INSTALLED_VERSION:
         from dbt.mp_context import get_mp_context
 
         register_adapter(config, get_mp_context())
@@ -147,7 +140,7 @@ def manifest(
     Manifest
         The manifest.
     """
-    if semver.VersionSpecifier("1", "7", "16") < DBT_INSTALLED_VERSION:
+    if (1, 7, 16) < DBT_INSTALLED_VERSION:
         from dbt_common.clients.system import get_env
         from dbt_common.context import set_invocation_context
 
