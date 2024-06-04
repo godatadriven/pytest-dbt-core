@@ -84,7 +84,7 @@ def config(request: SubRequest) -> RuntimeConfig:
         threads=None,
     )
 
-    if (1, 5) < DBT_INSTALLED_VERSION:
+    if DBT_INSTALLED_VERSION > (1, 5):
         # See https://github.com/dbt-labs/dbt-core/issues/9183
         project_flags = project.read_project_flags(
             args.project_dir, args.profiles_dir
@@ -112,7 +112,7 @@ def adapter(config: RuntimeConfig) -> AdapterContainer:
     AdapterContainer
         The adapter.
     """
-    if (1, 7) < DBT_INSTALLED_VERSION:
+    if DBT_INSTALLED_VERSION > (1, 7):
         from dbt.mp_context import get_mp_context
 
         register_adapter(config, get_mp_context())
@@ -140,7 +140,7 @@ def manifest(
     Manifest
         The manifest.
     """
-    if (1, 7, 16) < DBT_INSTALLED_VERSION:
+    if DBT_INSTALLED_VERSION > (1, 7):
         from dbt_common.clients.system import get_env
         from dbt_common.context import set_invocation_context
 
