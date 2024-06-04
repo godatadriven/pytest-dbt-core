@@ -15,7 +15,6 @@ from dbt.config.runtime import RuntimeConfig
 from dbt.context import providers
 from dbt.contracts.graph.manifest import Manifest
 from dbt.parser.manifest import ManifestLoader
-from dbt.semver import VersionSpecifier
 from dbt.tracking import User
 
 from dbt.adapters.factory import (  # isort:skip
@@ -26,6 +25,15 @@ from dbt.adapters.factory import (  # isort:skip
 
 
 dbt.tracking.active_user = User(os.getcwd())
+
+
+def _get_installed_dbt_version() -> tuple[int, int]:
+    """Cast a dbt version to a tuple with major and minor version."""
+    installed_dbt_version = version.get_installed_version()
+    return int(installed_dbt_version.major), int(installed_dbt_version.minor)
+
+
+DBT_INSTALLED_VERSION = _get_installed_dbt_version()
 
 
 @dataclasses.dataclass(frozen=True)
@@ -47,6 +55,8 @@ class Args:
     target: str | None
     profile: str | None
     threads: int | None
+    # Required from dbt version 1.8 onwards
+    REQUIRE_RESOURCE_NAMES_WITHOUT_SPACES = False
 
 
 @pytest.fixture
@@ -74,7 +84,7 @@ def config(request: SubRequest) -> RuntimeConfig:
         threads=None,
     )
 
-    if VersionSpecifier("1", "5", "12") < version.get_installed_version():
+    if DBT_INSTALLED_VERSION > (1, 5):
         # See https://github.com/dbt-labs/dbt-core/issues/9183
         project_flags = project.read_project_flags(
             args.project_dir, args.profiles_dir
@@ -102,7 +112,12 @@ def adapter(config: RuntimeConfig) -> AdapterContainer:
     AdapterContainer
         The adapter.
     """
-    register_adapter(config)
+    if DBT_INSTALLED_VERSION > (1, 7):
+        from dbt.mp_context import get_mp_context
+
+        register_adapter(config, get_mp_context())
+    else:
+        register_adapter(config)
     adapter = get_adapter(config)
     adapter.acquire_connection()
     return adapter
@@ -125,6 +140,12 @@ def manifest(
     Manifest
         The manifest.
     """
+    if DBT_INSTALLED_VERSION > (1, 7):
+        from dbt_common.clients.system import get_env
+        from dbt_common.context import set_invocation_context
+
+        set_invocation_context(get_env())
+
     manifest = ManifestLoader.get_full_manifest(adapter.config)
     return manifest
 
