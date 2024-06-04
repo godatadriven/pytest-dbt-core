@@ -1,6 +1,9 @@
+## [0.2.4] - 2024-06-04
+
+- Support dbt v1.8 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/58))
+- Handle dbt flags for dbt version 1.6 and higher ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/58))
 - Test dbt v1.7 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/48))
 - Make pytest `parser.addoption` type a function ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/51))
-- Handle dbt flags for dbt version 1.6 and higher
 
 ## [0.2.3] - 2023-08-25
 
