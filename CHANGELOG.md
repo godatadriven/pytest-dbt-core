@@ -1,3 +1,4 @@
+- Support dbt-spark v1.9 and v1.10
 - Drop support for Python 3.7 ([PR](https://github.com/godatadriven/pytest-dbt-core/pull/57))
 
 ## [0.2.4] - 2024-06-04

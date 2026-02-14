@@ -25,8 +25,8 @@ repos:
   - id: black
     name: Run black formatter
     language_version: python3.9
-- repo: https://github.com/humitos/mirrors-autoflake.git
-  rev: v1.3
+- repo: https://github.com/PyCQA/autoflake
+  rev: v2.3.1
   hooks:
   - id: autoflake
     args: ['--in-place', '--remove-all-unused-imports']
